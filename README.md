@@ -50,8 +50,10 @@ A full-stack order management application built with **Next.js and Express.js**.
 ### Backend (`/express`)
 - Node.js
 - Express.js
+- Sequelize
 - REST API
-
+- Redis Cache
+- PostgreSQL
 ## Project Structure
 
 ```text
@@ -67,7 +69,7 @@ A full-stack order management application built with **Next.js and Express.js**.
 │   ├── .env.example
 │   └── package.json
 │
-├── Schemas.md            # Data schemas and documentation
+├
 └── README.md
 ```
 
