@@ -230,6 +230,8 @@ Contributions are welcome!
 
 ## License
 
-This project is licensed under the MIT License.
+## License
 
-Add a `LICENSE` file to the repository if you choose MIT.
+This project is licensed under the [MIT License](LICENSE).
+
+You are free to use, copy, modify, merge, publish, distribute, sublicense, and sell copies of this software, subject to the terms of the MIT License.
