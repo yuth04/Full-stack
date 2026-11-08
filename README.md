@@ -1,125 +1,233 @@
-# Full Stack Orders App
+# Full Stack Orders Management App
 
-An order management app with a Next.js frontend and an Express backend. Admins can browse orders, filter and search them, view order details, and update order and payment status.
+A full-stack order management application built with **Next.js and Express.js**. It provides an admin dashboard for managing orders, tracking order progress, monitoring payments, and viewing customer and transaction details.
 
 ## Features
 
-- Orders list with status tabs, search, date filter, and pagination
-- Order detail page with items, timeline, customer and payment information
-- Order tracking timeline: Pending → Processing → Shipped → Completed, plus Cancel
-- Payment status updates: Unpaid, Paid, Refunded
-- Responsive layout with light and dark mode support
+### Order Management
+- View all orders in a responsive data table.
+- Search orders by order ID or customer information.
+- Filter orders by status and date.
+- Paginated order listing.
+- View detailed order information, including purchased items and totals.
 
-## Tech stack
+### Order Tracking
+- Track order progress through a visual timeline.
+- Update order status:
+  - Pending
+  - Processing
+  - Shipped
+  - Completed
+  - Cancelled
+- View order status history and progress.
 
-**Frontend** (`/frontend`)
-- Next.js (App Router) and React
+### Payment Management
+- View payment method and payment information.
+- Manage payment statuses:
+  - Unpaid
+  - Paid
+  - Refunded
+- Display payment status separately from order status.
+
+### User Interface
+- Modern and clean admin dashboard.
+- Fully responsive design.
+- Light and dark mode support.
+- Toast notifications for user actions.
+- Reusable UI components.
+
+## Tech Stack
+
+### Frontend (`/frontend`)
+- Next.js (App Router)
+- React
 - TypeScript
-- Tailwind CSS and shadcn/ui
-- lucide-react icons and sonner toasts
+- Tailwind CSS
+- shadcn/ui
+- Lucide React
+- Sonner (Toast Notifications)
 
-**Backend** (`/express`)
-- Node.js and Express
+### Backend (`/express`)
+- Node.js
+- Express.js
+- REST API
 
-## Project structure
+## Project Structure
 
-```
+```text
 .
-├── express/       # REST API
-├── frontend/      # Next.js app
-├── Shemas.md      # Data schemas
+├── express/              # Express.js backend
+│   ├── src/
+│   ├── .env.example
+│   └── package.json
+│
+├── frontend/             # Next.js frontend
+│   ├── src/
+│   ├── public/
+│   ├── .env.example
+│   └── package.json
+│
+├── Schemas.md            # Data schemas and documentation
 └── README.md
 ```
 
-## Getting started
+## Getting Started
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org) 18 or later
-- npm (comes with Node.js)
+Make sure you have installed:
 
-### 1. Clone the repository
+- [Node.js](https://nodejs.org/) 18 or later
+- npm
+- Git
+- A configured database (if required by your backend)
+
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/YOUR-USERNAME/YOUR-REPO.git
+
 cd YOUR-REPO
 ```
 
-### 2. Set up the backend
+### 2. Set Up the Backend
 
 ```bash
 cd express
+
 npm install
+```
+
+Create your environment file:
+
+```bash
 cp .env.example .env
+```
+
+Configure your backend environment variables, then start the server:
+
+```bash
 npm start
 ```
 
-### 3. Set up the frontend
+### 3. Set Up the Frontend
 
-In a second terminal:
+Open a second terminal:
 
 ```bash
 cd frontend
+
 npm install
+```
+
+Create your environment file:
+
+```bash
 cp .env.example .env.local
+```
+
+Configure the frontend API URL, then start the development server:
+
+```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+### 4. Open the Application
 
-## Environment variables
+Visit:
 
-Copy each `.env.example` file and fill in your own values. Never commit real keys or passwords.
+```text
+http://localhost:3000
+```
 
-**`express/.env`**
+Make sure your Express backend is running before using the application.
+
+## Environment Variables
+
+Create environment files using the provided examples.
+
+### Backend (`express/.env`)
 
 | Variable | Description |
-| --- | --- |
-| `PORT` | Port the API runs on |
+|---|---|
+| `PORT` | Backend server port |
 | `DATABASE_URL` | Database connection string |
 
-**`frontend/.env.local`**
+### Frontend (`frontend/.env.local`)
 
 | Variable | Description |
-| --- | --- |
-| `NEXT_PUBLIC_API_URL` | Base URL of the Express API |
+|---|---|
+| `NEXT_PUBLIC_API_URL` | Base URL of the Express REST API |
 
-Update these tables to match the variables your project actually uses.
+Update these variables according to your actual project configuration.
 
-## Scripts
+**Security:** Never commit real API keys, database credentials, or passwords to Git.
 
-**Frontend**
+## Available Scripts
 
-| Command | What it does |
-| --- | --- |
-| `npm run dev` | Start the development server |
-| `npm run build` | Create a production build |
-| `npm start` | Run the production build |
-| `npm run lint` | Check code with ESLint |
+### Frontend
 
-**Backend**
+| Command | Description |
+|---|---|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm start` | Start production server |
+| `npm run lint` | Run ESLint |
 
-| Command | What it does |
-| --- | --- |
-| `npm start` | Start the API server |
+### Backend
 
-## Order statuses
+| Command | Description |
+|---|---|
+| `npm start` | Start Express API server |
 
-| Status | Meaning |
-| --- | --- |
-| Pending | Order received, waiting to be processed |
+Check each package's `package.json` for the actual available scripts.
+
+## Order Status Workflow
+
+| Status | Description |
+|---|---|
+| Pending | Order received and waiting for processing |
 | Processing | Items are being prepared and packed |
-| Shipped | On the way to the customer |
-| Completed | Delivered and fulfilled |
-| Cancelled | Order stopped |
+| Shipped | Order has been dispatched to the customer |
+| Completed | Order has been successfully delivered |
+| Cancelled | Order has been cancelled |
+
+## Payment Status
+
+| Status | Description |
+|---|---|
+| Unpaid | Payment has not been received |
+| Paid | Payment has been confirmed |
+| Refunded | Payment has been refunded |
+
+Order status and payment status are managed independently.
 
 ## Contributing
 
-1. Create a branch: `git checkout -b feature/your-feature`
-2. Commit your changes: `git commit -m "Add your feature"`
-3. Push the branch: `git push origin feature/your-feature`
-4. Open a pull request
+Contributions are welcome!
+
+1. Create a new branch:
+
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+
+2. Commit your changes:
+
+   ```bash
+   git commit -m "Add your feature"
+   ```
+
+3. Push your branch:
+
+   ```bash
+   git push origin feature/your-feature
+   ```
+
+4. Open a Pull Request.
 
 ## License
 
-Add your license here, for example MIT.
+This project is licensed under the MIT License.
+
+Add a `LICENSE` file to the repository if you choose MIT.
